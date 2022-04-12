@@ -1,28 +1,285 @@
-.content-card {
-  background-color: var(--bg-content-color);
-  max-width: var(--content-width);
-  margin: 0 auto;
-  transition: background-color 0.6s;
-  padding: var(--space);
-  border-radius: $radius_main;
-  -webkit-box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.02), 1px 1px 15px 0 rgba(0,0,0,0.03);
-  box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.02), 1px 1px 15px 0 rgba(0,0,0,0.03);
-  -webkit-transition: background-color 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.6s;
-  transition: background-color 0.3s, -webkit-transform 0.3s, -webkit-box-shadow 0.6s;
-  -o-transition: transform 0.3s, background-color 0.3s, box-shadow 0.6s;
-  transition: transform 0.3s, background-color 0.3s, box-shadow 0.6s;
-  transition: transform 0.3s, background-color 0.3s, box-shadow 0.6s, -webkit-transform 0.3s, -webkit-box-shadow 0.6s;
-}
-.content-card>:first-child {
-  margin-top: 0;
-}
-.content-card>:last-child {
-  margin-bottom: 0;
-}
-.MathJax {
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.separate-dot:after {
-  content: ' · ';
-}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+        <link rel="shortcut icon" href="/images/page.ico">
+    
+    
+    
+    
+    
+
+
+    <!-- meta -->
+
+
+<title>关于blog | zhangtのblog</title>
+
+
+    <meta name="keywords" content="learn, life, blog">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="blog的搭建心心念念的blog终于在“旺旺”大佬的帮助下搭建好了，关于自建blog的想法萌生在大三下期。在一次偶然的机会看到了“旺旺”大佬的blog，我开始对blog产生了兴趣。由于到了知识空白区以及考研等其他杂事，blog的搭建在前日才完成。在此感谢“旺旺”大佬，在这方面有大佬引路真是一个十分幸运的事情。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于blog">
+<meta property="og:url" content="http://example.com/2022/04/11/note-1/index.html">
+<meta property="og:site_name" content="zhangtのblog">
+<meta property="og:description" content="blog的搭建心心念念的blog终于在“旺旺”大佬的帮助下搭建好了，关于自建blog的想法萌生在大三下期。在一次偶然的机会看到了“旺旺”大佬的blog，我开始对blog产生了兴趣。由于到了知识空白区以及考研等其他杂事，blog的搭建在前日才完成。在此感谢“旺旺”大佬，在这方面有大佬引路真是一个十分幸运的事情。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-11T01:47:15.000Z">
+<meta property="article:modified_time" content="2022-04-11T06:37:18.558Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="learn">
+<meta property="article:tag" content="life">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary_large_image">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" >
+        
+            <link rel="stylesheet" id="hl-dark-theme" href="/css/highlight/dark.css" media="none">
+        
+    
+
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/style/dark.css">
+
+    
+<script src="/js/darkmode.js"></script>
+
+
+
+     
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">zhangtのblog</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">归档</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/page/" class="navbar-menu button">Page</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+    <a href="javaScript:void(0);" id="btn-toggle-dark">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </a>
+
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">归档</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/page/" class="dropdown-menu button">Page</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        关于blog
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/04/" class="post-meta__date button">2022-04-11</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header"></div>
+    <div class="post__content">
+        <h2 id="blog的搭建"><a href="#blog的搭建" class="headerlink" title="blog的搭建"></a>blog的搭建</h2><p>心心念念的blog终于在“旺旺”大佬的帮助下搭建好了，关于自建blog的想法萌生在大三下期。在一次偶然的机会看到了“旺旺”大佬的blog，我开始对blog产生了兴趣。由于到了知识空白区以及考研等其他杂事，blog的搭建在前日才完成。在此感谢“旺旺”大佬，在这方面有大佬引路真是一个十分幸运的事情。</p>
+<span id="more"></span>
+
+<h2 id="为什么要搭建blog？"><a href="#为什么要搭建blog？" class="headerlink" title="为什么要搭建blog？"></a>为什么要搭建blog？</h2><ul>
+<li>对于这个问题，blog相较于其他社交平台可能更为小众。它不会被系统推荐给其他人，所以blog更多的是为自己所用。有时候我在苦恼这样一件事情：当我费尽心思到网上解决了一个编程问题时，由于使用次数较少以及自身能力的不足。在下一次再次碰到此问题时可能又是从零开始，那将会浪费自己很多的时间以及精力。曾经将编程技巧记录在记事本里面，但是在查阅起来非常不便。我一直在寻找这样一个适合于记录自己笔记的云平台，直到blog出现。将自己所查阅的编程技巧记录下来，下次再通过网页版再次查阅时将使自己很快的回想起来，这无疑是一件美事！</li>
+<li>当然随着年龄的增长，经常会因为身边的一些小事而心生感慨。作为一个与大多数人另类的人，我的想法也许很难与大多数人契合。心中的碎碎念也自然无法释放，因此将这些记录下来。在多年后的某天再回看此处，这无疑是一件趣事！</li>
+<li>想想自己枯燥的研究生生活，我是一个兴趣广泛的人，因此给自己找点除科学研究以外的事情十分必要。目前来说，我对研究生活充满了恨与爱。恨表现在自己的能力是如此的不足，每次面对程序以及科学问题相知甚少。爱则表现在每次运行完程序看到结果那一丝兴奋，尽管心里对效果很差的结果有了预备，但是每次程序成功运行的一丝成就感是不能掩盖的。在研究生生活，将学习与收获记录下来。尽管这些可能是一些错误的收获记录，在对问题重新认识后再回看当时的错误与想法，这无疑是一笔丰富的财富！</li>
+<li>有时候自己也会焦虑和emo，当然对于每个人而言我觉得这都是正常的。面对焦虑和emo，我觉得更多的应该在心态上有所转换。将问题换一个角度也许会收到不一样的心理反馈，就我而言很是受益。一个简单的例子就是我的英语、语文等文科学科相对较差，甚至位于周围人垫底状态。在研究生考试中更是奇差无比，这两门考试在周围学校的考生成绩中均位于垫底。那时候回忆起了往昔，从小到大，我的文科成绩均位于垫底状态，于是我开始怀疑人生，为什么在此付出的时间最多而成绩确实最差。之后也逐渐想明白，若我没有花这么多时间我是不是成绩比现在还差，寒假回家给表妹看初中英语我竟然觉得有一丝简单。换做十年前，我面对英语连几个字母组成的小单词都记不住，相比于现在简直是菜鸡中的菜鸡。想到这里，我渐渐的将这件事淡化。毕竟我是在进步的，只不过进步得没有我想象中那么快。焦虑与emo通常来源于自己的目标与现实差距过大，当看到周围自认为生活与状态都很好的人时，往往会将之比较。与自己实力差距过大的人比较终将陷入绝望，因为这个世界如此之大，你怎知道：“天将降大任于斯人也”，这个斯人就是你呢。曾经进过一个数学群，里面很多不乏清华、北大这样top学校的学生，从他们的交谈中很多竞赛生，他们有的人在大一、大二就已经将大学所有课程自学完成。那个时候我是第一次感觉与人之差距如此之大的，作为一只井底之蛙，有时候见到了天，难免要为此惊叹一下。但是作为一只蛙，那终将不是我的归宿。也许是愈来愈躺平了，对生活中的种种不如意逐渐平淡化。对于一个理想的生活我认为就是得多发现自己的优点与进步，将沮丧与不悦抛之脑后不失为一种不错的选择。于是我搭建了blog，将自己的life记录在册，每次记录也许就是一次进步的书写，看着自己进步的点滴，何言焦虑和emo不离我而去。将生活细节量化，这无疑是一种幸福！</li>
+</ul>
+<h2 id="给正在看博文的朋友"><a href="#给正在看博文的朋友" class="headerlink" title="给正在看博文的朋友"></a>给正在看博文的朋友</h2><p>如果你看到此处，可能你与我素不相识，也可能你是与我相识的知心朋友。在此处都对你们表示深深的感谢，相信你们都是为自己的兴趣和梦想跨步追逐的人。你们能进入我的blog，我表示我很幸运，能有这么一群与自己兴趣和梦想相似的人共同奋斗的人。</p>
+<div align=right><p>————一个成长的小菜鸡</p></div>
+    </div>
+     
+    <div class="post-footer__meta"><p>updated at 2022-04-11</p></div> 
+    <div class="post-entry__tags"><a href="/tags/learn/" class="post-tags__link button"># learn</a><a href="/tags/life/" class="post-tags__link button"># life</a><a href="/tags/blog/" class="post-tags__link button"># blog</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/2022/04/11/note-2/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            关于训练集、验证集、测试集
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2022/04/09/hexo-learn/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            学习Hexo
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+
+
+</main>
+
+            <footer class="footer">
+    
+    
+
+
+    
+     
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2022 <a href="/">zhangtのblog</a>
+        </p>
+    
+    
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme - <a href="https://github.com/ChrAlpha/hexo-theme-cards" target="_blank">Cards</a></p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+    </body>
+</html>
