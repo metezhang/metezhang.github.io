@@ -27,27 +27,28 @@
     <!-- meta -->
 
 
-<title>心灵杂谈 (四):陷入混乱 | zhangtのblog</title>
+<title>关于xarray里面rolling的一点记录 | zhangtのblog</title>
 
 
-    <meta name="keywords" content="小吐槽">
+    <meta name="keywords" content="life, code">
 
 
 
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="一直free-style的风格渐渐的被生活打压，有时候真不知道是自己的问题还是别人的问题。   唉，可能曾经那个free-style的boy会逐渐变得畏首畏尾。   也许将来看到这条note会被自己的傻气所笑到，可人什么时候不觉得自己过去的幼稚可笑呢~就这样吧，就算好笑也记下来了。   以后做好自己，谨言慎行。谨言慎行，谨言慎行，谨言慎行！   虽然很生气也很无奈外加一点心酸、可怜，但是明天的太阳">
+    <meta name="description" content="最近一直在愁着写论文，抓耳挠腮。一直没心情写点东西，晚上也睡不着，也没啥胃口吃饭~~~这是要瘦了吗。   今天在编写程序的时候发现一个用法很奈斯，因此做一个记录。   问题起因是要我需要做一个滑动平均，这个方法原理和算法上十分简单。本来自己写代码也可以很快完成，但是作为一个合格的摸鱼佬，能偷懒决不自己写。于是我在网上翻找了起来，找到好几个，但是都不如意，最后看到一个代码中的用法深受启发。 dail">
 <meta property="og:type" content="article">
-<meta property="og:title" content="心灵杂谈 (四):陷入混乱">
-<meta property="og:url" content="http://example.com/2022/04/17/note-6/index.html">
+<meta property="og:title" content="关于xarray里面rolling的一点记录">
+<meta property="og:url" content="http://example.com/2022/05/02/note-7/index.html">
 <meta property="og:site_name" content="zhangtのblog">
-<meta property="og:description" content="一直free-style的风格渐渐的被生活打压，有时候真不知道是自己的问题还是别人的问题。   唉，可能曾经那个free-style的boy会逐渐变得畏首畏尾。   也许将来看到这条note会被自己的傻气所笑到，可人什么时候不觉得自己过去的幼稚可笑呢~就这样吧，就算好笑也记下来了。   以后做好自己，谨言慎行。谨言慎行，谨言慎行，谨言慎行！   虽然很生气也很无奈外加一点心酸、可怜，但是明天的太阳">
+<meta property="og:description" content="最近一直在愁着写论文，抓耳挠腮。一直没心情写点东西，晚上也睡不着，也没啥胃口吃饭~~~这是要瘦了吗。   今天在编写程序的时候发现一个用法很奈斯，因此做一个记录。   问题起因是要我需要做一个滑动平均，这个方法原理和算法上十分简单。本来自己写代码也可以很快完成，但是作为一个合格的摸鱼佬，能偷懒决不自己写。于是我在网上翻找了起来，找到好几个，但是都不如意，最后看到一个代码中的用法深受启发。 dail">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-04-17T14:00:19.000Z">
-<meta property="article:modified_time" content="2022-04-17T14:10:00.239Z">
+<meta property="article:published_time" content="2022-05-02T07:25:52.000Z">
+<meta property="article:modified_time" content="2022-05-02T07:44:27.123Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="小吐槽">
+<meta property="article:tag" content="life">
+<meta property="article:tag" content="code">
 <meta name="twitter:card" content="summary_large_image">
 
 
@@ -140,10 +141,10 @@
 
 <div class="post-title">
     <h1 class="post-title__text">
-        心灵杂谈 (四):陷入混乱
+        关于xarray里面rolling的一点记录
     </h1>
     <div class="post-title__meta">
-        <a href="/archives/2022/04/" class="post-meta__date button">2022-04-17</a>
+        <a href="/archives/2022/05/" class="post-meta__date button">2022-05-02</a>
         
  
         
@@ -162,47 +163,37 @@
 <article class="post content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        <p>一直free-style的风格渐渐的被生活打压，有时候真不知道是自己的问题还是别人的问题。  </p>
-<p>唉，可能曾经那个free-style的boy会逐渐变得畏首畏尾。  </p>
-<p>也许将来看到这条note会被自己的傻气所笑到，可人什么时候不觉得自己过去的幼稚可笑呢~就这样吧，就算好笑也记下来了。  </p>
-<p>以后做好自己，谨言慎行。谨言慎行，谨言慎行，谨言慎行！  </p>
-<p>虽然很生气也很无奈外加一点心酸、可怜，但是明天的太阳还是会照样升起~  </p>
-<p>定个小目标：明天早起早起~~~(*￣︶￣)，悲愤完了还是得开心鸭(*￣︶￣)</p>
+        <p>最近一直在愁着写论文，抓耳挠腮。一直没心情写点东西，晚上也睡不着，也没啥胃口吃饭~~~这是要瘦了吗。  </p>
+<p>今天在编写程序的时候发现一个用法很奈斯，因此做一个记录。  </p>
+<p>问题起因是要我需要做一个滑动平均，这个方法原理和算法上十分简单。本来自己写代码也可以很快完成，但是作为一个合格的摸鱼佬，能偷懒决不自己写。于是我在网上翻找了起来，找到好几个，但是都不如意，最后看到一个代码中的用法深受启发。</p>
+<pre><code>daily_data.rolling(time = len(lfw), center = True)
+</code></pre>
+<p>其中daily_data是一个xarray.DataArray类型数据。rolling(n)其实就是创建一个长度为n的窗口，然后将这个窗口依次滚动。这个操作就和分类操作类似，将每个窗口当作一个整体，然后可以对这个整体批量操作。  </p>
+<p>这样一来想要实现滑动平均就十分容易了，只需要设置滑动窗口以及作滑动的维度然后再求平均就成了。里面的center参数意思是以自己为中心设置向两边扩散设置窗口。</p>
+<pre><code>daily_data.rolling(time=11,center= True).mean()
+</code></pre>
+<p>最后滑动平均就只用了一行代码实现了，有轮子是真的奈斯~~~</p>
 
     </div>
      
-    <div class="post-footer__meta"><p>updated at 2022-04-17</p></div> 
-    <div class="post-entry__tags"><a href="/tags/%E5%B0%8F%E5%90%90%E6%A7%BD/" class="post-tags__link button"># 小吐槽</a></div> 
+    <div class="post-footer__meta"><p>updated at 2022-05-02</p></div> 
+    <div class="post-entry__tags"><a href="/tags/life/" class="post-tags__link button"># life</a><a href="/tags/code/" class="post-tags__link button"># code</a></div> 
 </article>
 
 
     <div class="nav">
         <div class="nav__prev">
             
-                <a href="/2022/05/02/note-7/" class="nav__link">
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
-                    </div>
-                    <div>
-                        <div class="nav__label">
-                            Previous Post
-                        </div>
-                        <div class="nav__title">
-                            关于xarray里面rolling的一点记录
-                        </div>
-                    </div>
-                </a>
-            
         </div>
         <div class="nav__next">
             
-                <a href="/2022/04/17/note-5/" class="nav__link">
+                <a href="/2022/04/17/note-6/" class="nav__link">
                     <div>
                         <div class="nav__label">
                             Next Post
                         </div>
                         <div class="nav__title">
-                            心灵杂谈 (三):有点小开心~
+                            心灵杂谈 (四):陷入混乱
                         </div>
                     </div>
                     <div>
