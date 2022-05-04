@@ -27,28 +27,24 @@
     <!-- meta -->
 
 
-<title>关于xarray里面rolling的一点记录 | zhangtのblog</title>
+<title>心灵杂谈 (五):科研真难~ | zhangtのblog</title>
 
-
-    <meta name="keywords" content="life, code">
 
 
 
 
     <!-- OpenGraph -->
  
-    <meta name="description" content="最近一直在愁着写论文，抓耳挠腮。一直没心情写点东西，晚上也睡不着，也没啥胃口吃饭~~~这是要瘦了吗。   今天在编写程序的时候发现一个用法很奈斯，因此做一个记录。   问题起因是要我需要做一个滑动平均，这个方法原理和算法上十分简单。本来自己写代码也可以很快完成，但是作为一个合格的摸鱼佬，能偷懒决不自己写。于是我在网上翻找了起来，找到好几个，但是都不如意，最后看到一个代码中的用法深受启发。 dail">
+    <meta name="description" content="跑了一天代码的我在深夜写起了这篇文章~，原因是我正在等待代码的结果。因为做的深度学习，每次run等待结果都需要很长的时间。   在之前我还在感慨科研真容易的时候，这段时间的经历算是给我了一个重锤。本来文章初稿已经结束，发现结果并不好。又重新寻找解决方案，重新run代码才是噩梦的开始。因为自身菜鸡本鸡，导致背后的机理很难理解。现在的模型调试完全就是瞎子找灯——摸黑，每次run一个方案需要等待十几分钟">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于xarray里面rolling的一点记录">
-<meta property="og:url" content="http://example.com/2022/05/02/note-7/index.html">
+<meta property="og:title" content="心灵杂谈 (五):科研真难~">
+<meta property="og:url" content="http://example.com/2022/05/04/note-8/index.html">
 <meta property="og:site_name" content="zhangtのblog">
-<meta property="og:description" content="最近一直在愁着写论文，抓耳挠腮。一直没心情写点东西，晚上也睡不着，也没啥胃口吃饭~~~这是要瘦了吗。   今天在编写程序的时候发现一个用法很奈斯，因此做一个记录。   问题起因是要我需要做一个滑动平均，这个方法原理和算法上十分简单。本来自己写代码也可以很快完成，但是作为一个合格的摸鱼佬，能偷懒决不自己写。于是我在网上翻找了起来，找到好几个，但是都不如意，最后看到一个代码中的用法深受启发。 dail">
+<meta property="og:description" content="跑了一天代码的我在深夜写起了这篇文章~，原因是我正在等待代码的结果。因为做的深度学习，每次run等待结果都需要很长的时间。   在之前我还在感慨科研真容易的时候，这段时间的经历算是给我了一个重锤。本来文章初稿已经结束，发现结果并不好。又重新寻找解决方案，重新run代码才是噩梦的开始。因为自身菜鸡本鸡，导致背后的机理很难理解。现在的模型调试完全就是瞎子找灯——摸黑，每次run一个方案需要等待十几分钟">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-02T07:25:52.000Z">
-<meta property="article:modified_time" content="2022-05-02T07:47:17.160Z">
+<meta property="article:published_time" content="2022-05-04T15:29:21.000Z">
+<meta property="article:modified_time" content="2022-05-04T15:53:47.040Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="life">
-<meta property="article:tag" content="code">
 <meta name="twitter:card" content="summary_large_image">
 
 
@@ -141,10 +137,10 @@
 
 <div class="post-title">
     <h1 class="post-title__text">
-        关于xarray里面rolling的一点记录
+        心灵杂谈 (五):科研真难~
     </h1>
     <div class="post-title__meta">
-        <a href="/archives/2022/05/" class="post-meta__date button">2022-05-02</a>
+        <a href="/archives/2022/05/" class="post-meta__date button">2022-05-04</a>
         
  
         
@@ -163,52 +159,30 @@
 <article class="post content-card">
     <div class="post__header"></div>
     <div class="post__content">
-        <p>最近一直在愁着写论文，抓耳挠腮。一直没心情写点东西，晚上也睡不着，也没啥胃口吃饭~~~这是要瘦了吗。  </p>
-<p>今天在编写程序的时候发现一个用法很奈斯，因此做一个记录。  </p>
-<p>问题起因是要我需要做一个滑动平均，这个方法原理和算法上十分简单。本来自己写代码也可以很快完成，但是作为一个合格的摸鱼佬，能偷懒决不自己写。于是我在网上翻找了起来，找到好几个，但是都不如意，最后看到一个代码中的用法深受启发。</p>
-<pre><code>daily_data.rolling(time = len(lfw), center = True)
-</code></pre>
-<p>其中daily_data是一个xarray.DataArray类型数据。rolling(n)其实就是创建一个长度为n的窗口，然后将这个窗口依次滚动。这个操作就和分类操作类似，将每个窗口当作一个整体，然后可以对这个整体批量操作。  </p>
-<p>这样一来想要实现滑动平均就十分容易了，只需要设置滑动窗口以及作滑动的维度然后再求平均就成了。里面的center参数意思是以自己为中心设置向两边扩散设置窗口。</p>
-<pre><code>daily_data.rolling(time=11,center= True).mean()
-</code></pre>
-<p>最后滑动平均就只用了一行代码实现了，有轮子是真的奈斯~~~</p>
-<p>参考:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/traditional/p/13776180.html">https://www.cnblogs.com/traditional/p/13776180.html</a></p>
+        <p>跑了一天代码的我在深夜写起了这篇文章~，原因是我正在等待代码的结果。因为做的深度学习，每次run等待结果都需要很长的时间。  </p>
+<p>在之前我还在感慨科研真容易的时候，这段时间的经历算是给我了一个重锤。本来文章初稿已经结束，发现结果并不好。又重新寻找解决方案，重新run代码才是噩梦的开始。因为自身菜鸡本鸡，导致背后的机理很难理解。现在的模型调试完全就是瞎子找灯——摸黑，每次run一个方案需要等待十几分钟甚至几十分钟的时间。这个等待过程十分漫长，每一次等待都是未知，多次尝试都无果。  </p>
+<p>www，卑微。在多次尝试后，我有了这个压根就调不好的想法~~~前几天和导师聊天说我调不出来怎么办，就被导师批评了一遍，还没开始咋就想着放弃呢。确实，科研本来就是在探索未知，要是都知道那还有啥探索的呢。或者这就是科研的魅力吧，明天继续肝代码，调程序。卑微o(╥﹏╥)o</p>
 
     </div>
      
-    <div class="post-footer__meta"><p>updated at 2022-05-02</p></div> 
-    <div class="post-entry__tags"><a href="/tags/life/" class="post-tags__link button"># life</a><a href="/tags/code/" class="post-tags__link button"># code</a></div> 
+    <div class="post-footer__meta"><p>updated at 2022-05-04</p></div> 
+    <div class="post-entry__tags"></div> 
 </article>
 
 
     <div class="nav">
         <div class="nav__prev">
             
-                <a href="/2022/05/04/note-8/" class="nav__link">
-                    <div>
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
-                    </div>
-                    <div>
-                        <div class="nav__label">
-                            Previous Post
-                        </div>
-                        <div class="nav__title">
-                            心灵杂谈 (五):科研真难~
-                        </div>
-                    </div>
-                </a>
-            
         </div>
         <div class="nav__next">
             
-                <a href="/2022/04/17/note-6/" class="nav__link">
+                <a href="/2022/05/02/note-7/" class="nav__link">
                     <div>
                         <div class="nav__label">
                             Next Post
                         </div>
                         <div class="nav__title">
-                            心灵杂谈 (四):陷入混乱
+                            关于xarray里面rolling的一点记录
                         </div>
                     </div>
                     <div>
